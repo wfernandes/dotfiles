@@ -40,3 +40,8 @@ above.
 ### Resources
 - https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
 - https://blog.carbonfive.com/2017/08/17/copying-and-pasting-with-tmux-2-4/
+=======
+dotfiles
+========
+
+Some dot files I use regularly
