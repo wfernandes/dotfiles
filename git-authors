@@ -1,13 +1,11 @@
 authors:
   jk: Jason Keene; jkeene
-  ap: Andrew Poydence; apoydence
-  js: Johanna Smith; josmith
-  bl: Brady Love; blove
-  tp: Travis Patterson; tpatterson
-  todd: Todd Persen; tpersen
-  ps: Peter Stone; pstone
-  ma: Mark Alston; malston
+  wf: Warren Fernandes; wfernandes
+  dz: Denny Zhang
+  tc: Tom Chen; tochen
 email:
   domain: pivotal.io
+email_addresses:
+  dz: denny.zhang001@gmail.com
 
 global: true

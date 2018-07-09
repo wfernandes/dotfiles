@@ -124,3 +124,19 @@ export GINKGO_EDITOR_INTEGRATION=true
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+
+source $HOME/.cargo/env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+alias k=kubectl
+alias kdepl="cd ~/workspace/loggregator-k8s-deployment"
+export GEM_HOME=$HOME/.gems
+export PATH=$GEM_HOME/bin:$PATH
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
+[ -s /home/pivotal/.autojump/etc/profile.d/autojump.sh ] && source /home/pivotal/.autojump/etc/profile.d/autojump.sh
+export PATH="$HOME/.cargo/bin:$PATH"
