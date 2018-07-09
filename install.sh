@@ -2,7 +2,6 @@
 
 LINK_DOTFILES=false
 INIT_VIM=false
-INSTALL_HOOKS=false
 
 flag=$1
 if [[ "$flag" = "" ]]; then
@@ -12,9 +11,6 @@ fi
 if [[ "$flag" = "-a" ]]; then
     LINK_DOTFILES=true
     INIT_VIM=true
-    INSTALL_HOOKS=true
-elif [[ "$flag" = "-h" ]]; then
-    INSTALL_HOOKS=true
 elif [[ "$flag" = "-l" ]]; then
     LINK_DOTFILES=true
 elif [[ "$flag" = "-p" ]]; then
@@ -54,21 +50,6 @@ function initialize_vim_plugins {
     vim +PluginInstall +qall
 }
 
-function install_hooks {
-    hook=$(pwd)/hooks/no-push-master
-    for repo in $(find ~/workspace -name .git -type d); do
-        for protected in loggregator-release loggregator-agent-release cf-syslog-drain-release log-cache-release cf-drain-cli noisy-neighbor-nozzle log-cache-cli service-metrics-release; do
-            pushd $repo > /dev/null
-                repo_url=$(git config --get remote.origin.url)
-                if [[ $repo_url = *"${protected}" || $repo_url = *"${protected}.git" ]]; then
-                    echo "installing pre-push hook in $repo_url..."
-                    cp $hook hooks/pre-push
-                fi
-            popd > /dev/null
-        done
-    done
-}
-
 
 update_submodules
 if [[ "$LINK_DOTFILES" = "true" ]]; then
@@ -76,7 +57,4 @@ if [[ "$LINK_DOTFILES" = "true" ]]; then
 fi
 if [[ "$INIT_VIM" = "true" ]]; then
     initialize_vim_plugins
-fi
-if [[ "$INSTALL_HOOKS" = "true" ]]; then
-    install_hooks
 fi

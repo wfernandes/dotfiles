@@ -134,7 +134,6 @@ if [ -f '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc' ]; then source 
 if [ -f '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
 alias k=kubectl
-alias kdepl="cd ~/workspace/loggregator-k8s-deployment"
 export GEM_HOME=$HOME/.gems
 export PATH=$GEM_HOME/bin:$PATH
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"

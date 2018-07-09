@@ -1,15 +1,7 @@
-# loggregator-dotfiles
+# oratos-dotfiles
 
-## Install Loggregator Dotfiles
+## Install Oratos Dotfiles
 
 ```
 ./install.sh
-```
-
-## Xubuntu Setup Script
-
-This will also install the Loggregator dotfiles.
-
-```
-./xubuntu-setup.sh
 ```
