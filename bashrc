@@ -137,5 +137,8 @@ alias k=kubectl
 export GEM_HOME=$HOME/.gems
 export PATH=$GEM_HOME/bin:$PATH
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
-[ -s /home/pivotal/.autojump/etc/profile.d/autojump.sh ] && source /home/pivotal/.autojump/etc/profile.d/autojump.sh
+# linux
+[ -s ~/.autojump/etc/profile.d/autojump.sh ] && source ~/.autojump/etc/profile.d/autojump.sh
+# darwin
+[ -s /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
 export PATH="$HOME/.cargo/bin:$PATH"
