@@ -21,14 +21,13 @@ export TERM=screen-256color
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     source /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
+  elif [ -f /usr/local/etc/bash_completion ]; then
+    source /usr/local/etc/bash_completion
   fi
 fi
 
-# source bash_completion.d
 if [ -d /usr/local/etc/bash_completion.d ]; then
-    for line in $(echo /usr/local/etc/bash_completion.d/*.sh); do
+    for line in $(find /usr/local/etc/bash_completion.d -iname "*.sh"); do
         source $line
     done
 fi
@@ -59,6 +58,9 @@ HISTFILESIZE=20000
 ##############################################################################
 # PROMPT
 ##############################################################################
+if [ -f $HOME/.git-prompt.sh ]; then
+    source $HOME/.git-prompt.sh
+fi
 NO_COLOR='\[\033[0m\]'
 YELLOW='\[\033[0;33m\]'
 RED='\[\033[1;31m\]'
@@ -125,7 +127,9 @@ export GINKGO_EDITOR_INTEGRATION=true
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-source $HOME/.cargo/env
+if [ -f $HOME/.cargo/env ]; then
+    source $HOME/.cargo/env
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc'; fi
@@ -145,3 +149,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export VAULT_ADDR=https://vault.oratos.ci.cf-app.com
 
 complete -C /home/pivotal/bin/vault vault
+
+eval "$(direnv hook bash)"
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
