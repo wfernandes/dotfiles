@@ -142,3 +142,6 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
 # darwin
 [ -s /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
 export PATH="$HOME/.cargo/bin:$PATH"
+export VAULT_ADDR=https://vault.oratos.ci.cf-app.com
+
+complete -C /home/pivotal/bin/vault vault
