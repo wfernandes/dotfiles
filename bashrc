@@ -124,8 +124,8 @@ bind '"\e[B": history-search-forward'
 # enable ginkgo focus in editors
 export GINKGO_EDITOR_INTEGRATION=true
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
 
 if [ -f $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
