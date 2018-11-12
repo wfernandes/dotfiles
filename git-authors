@@ -1,12 +1,7 @@
 authors:
+  bf: Ben Fuller; bfuller
   jk: Jason Keene; jkeene
   wf: Warren Fernandes; wfernandes
-  dz: Denny Zhang
-  tc: Tom Chen; tochen
-  rs: Robert Sullivan; rsullivan
 email:
   domain: pivotal.io
-email_addresses:
-  dz: denny.zhang001@gmail.com
-
 global: true
