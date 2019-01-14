@@ -1,7 +1,11 @@
 authors:
   bf: Ben Fuller; bfuller
+  bl: Brady Love; blove
   jk: Jason Keene; jkeene
   wf: Warren Fernandes; wfernandes
+  wff: Warren Fernandes
 email:
   domain: pivotal.io
+email_addresses:
+  wff: warren.f.fernandes@gmail.com
 global: true
