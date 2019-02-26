@@ -56,5 +56,6 @@ if [[ "$LINK_DOTFILES" = "true" ]]; then
     link_all_dotfiles
 fi
 if [[ "$INIT_VIM" = "true" ]]; then
+    curl -L -o ~/.vim/colors/lucius.vim https://github.com/jonathanfilip/vim-lucius/raw/master/colors/lucius.vim
     initialize_vim_plugins
 fi
