@@ -50,10 +50,16 @@ function initialize_vim_plugins {
     vim +PluginInstall +qall
 }
 
+function link_ssh_rc {
+    echo "Attempting to link sshrc"
+    ln -is $PWD/sshrc $HOME/.ssh/rc
+}
+
 
 update_submodules
 if [[ "$LINK_DOTFILES" = "true" ]]; then
     link_all_dotfiles
+    link_ssh_rc
 fi
 if [[ "$INIT_VIM" = "true" ]]; then
     initialize_vim_plugins
