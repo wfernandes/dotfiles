@@ -25,6 +25,9 @@ Plugin 'scrooloose/nerdtree'         " Directory tree explorer
 Plugin 'gaving/vim-textobj-argument' " Function arguments as text objects
 Plugin 'vim-airline/vim-airline'     " Status line improvements
 Plugin 'regreplop.vim'               " Replace with a specified register
+Plugin 'kana/vim-textobj-user'       " Needed for below
+Plugin 'pianohacker/vim-indented-paragraph'
+Plugin 'pianohacker/vim-textobj-variable-segment'
 call vundle#end()                    " Complete vunde initialization
 
 " detect file type, turn on that type's plugins and indent preferences
@@ -200,3 +203,10 @@ set laststatus=2
 " resize windows more easily
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
+call textobj#user#map('indentedparagraph', {
+\   '-': {
+\     'move-n': ')',
+\     'move-p': '(',
+\   }
+\ })
