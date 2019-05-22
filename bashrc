@@ -137,7 +137,6 @@ if [ -f '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc' ]; then source 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
-alias k=kubectl
 export GEM_HOME=$HOME/.gems
 export PATH=$GEM_HOME/bin:$PATH
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
@@ -154,3 +153,14 @@ eval "$(direnv hook bash)"
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+# https://werat.github.io/2017/02/04/tmux-ssh-agent-forwarding.html
+if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+
+## Aliases
+alias k=kubectl
+alias gap='git add -p'
+alias gpr='git pull --rebase --autostash'
+alias gpp='git pull --rebase --autostash && git push'
+alias gs='git status'
