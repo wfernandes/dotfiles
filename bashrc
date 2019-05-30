@@ -158,9 +158,4 @@ if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
 
-## Aliases
-alias k=kubectl
-alias gap='git add -p'
-alias gpr='git pull --rebase --autostash'
-alias gpp='git pull --rebase --autostash && git push'
-alias gs='git status'
+source <(kubectl completion bash)

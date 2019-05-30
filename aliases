@@ -6,8 +6,13 @@ else
   alias ls="ls --color=auto"
 fi
 
-alias ll="ls -la"
+alias gap='git add -p'
+alias gpp='git pull --rebase --autostash && git push'
+alias gpr='git pull --rebase --autostash'
 alias grep='grep --color=auto'
+alias gs='git status'
+alias k=kubectl
+alias ll="ls -la"
 alias nocaps='/usr/bin/setxkbmap -layout us -option ctrl:nocaps'
 alias pbc='tmux show-buffer | DISPLAY=:0 xsel -b'
 alias tmux='tmux -f $HOME/workspace/oratos-dotfiles/tmux.conf'

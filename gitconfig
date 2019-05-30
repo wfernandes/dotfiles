@@ -1,5 +1,5 @@
 [push]
-	default = simple
+	default = current
 [alias]
   blog="log origin/master... --left-right"
   br=branch
