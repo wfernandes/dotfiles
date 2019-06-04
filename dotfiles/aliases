@@ -15,4 +15,3 @@ alias k=kubectl
 alias ll="ls -la"
 alias nocaps='/usr/bin/setxkbmap -layout us -option ctrl:nocaps'
 alias pbc='tmux show-buffer | DISPLAY=:0 xsel -b'
-alias tmux='tmux -f $HOME/workspace/oratos-dotfiles/tmux.conf'

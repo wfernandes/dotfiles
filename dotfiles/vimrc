@@ -187,7 +187,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " clipboard fusion!
-set clipboard^=unnamed clipboard^=unnamedplus
+"set clipboard^=unnamed clipboard^=unnamedplus
 
 " turn folding on and open by default
 set foldmethod=syntax

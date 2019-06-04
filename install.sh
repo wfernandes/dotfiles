@@ -2,6 +2,7 @@
 
 LINK_DOTFILES=false
 INIT_VIM=false
+INIT_NVIM=false
 
 flag=$1
 if [[ "$flag" = "" ]]; then
@@ -15,30 +16,12 @@ elif [[ "$flag" = "-l" ]]; then
     LINK_DOTFILES=true
 elif [[ "$flag" = "-p" ]]; then
     INIT_VIM=true
+elif [[ "$flag" = "-n" ]]; then
+    INIT_NVIM=true
 fi
 
-all_dotfiles="bashrc bash_darwin bash_profile common_profile tmate.conf vimrc vim aliases git-authors gitconfig alacritty.yml rbenv"
-
-function link {
-    echo Attempting to link $1
-    ln -is $PWD/$1 $HOME/.$1
-}
-
-function print_error {
-    echo Failed to link $1
-}
-
 function link_all_dotfiles {
-    for dotfile in $all_dotfiles; do
-        if [[ -f $HOME/.$1 ]];
-        then
-            # file exists
-            print_error $dotfile
-        else
-            # file does not exist
-            link $dotfile
-        fi
-    done
+    rcup -d dotfiles -S config/nvim -S vim -v
 }
 
 function update_submodules {
@@ -55,15 +38,13 @@ function initialize_nvim_plugins {
     nvim +PluginInstall +qall
 }
 
-function link_ssh_rc {
-    echo "Attempting to link sshrc"
-    ln -is $PWD/sshrc $HOME/.ssh/rc
-}
+brew bundle
+
+tic tmux-256color.terminfo
 
 update_submodules
 if [[ "$LINK_DOTFILES" = "true" ]]; then
     link_all_dotfiles
-    link_ssh_rc
 fi
 if [[ "$INIT_VIM" = "true" ]]; then
     initialize_vim_plugins
