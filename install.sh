@@ -50,11 +50,15 @@ function initialize_vim_plugins {
     vim +PluginInstall +qall
 }
 
+function initialize_nvim_plugins {
+    # install nvim plugins with vundle
+    nvim +PluginInstall +qall
+}
+
 function link_ssh_rc {
     echo "Attempting to link sshrc"
     ln -is $PWD/sshrc $HOME/.ssh/rc
 }
-
 
 update_submodules
 if [[ "$LINK_DOTFILES" = "true" ]]; then
@@ -63,4 +67,9 @@ if [[ "$LINK_DOTFILES" = "true" ]]; then
 fi
 if [[ "$INIT_VIM" = "true" ]]; then
     initialize_vim_plugins
+fi
+if [[ "$INIT_NVIM" = "true" ]]; then
+    mkdir -p ~/.config
+    ln -is $PWD/nvim ~/.config/nvim
+    initialize_nvim_plugins
 fi

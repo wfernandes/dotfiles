@@ -10,7 +10,7 @@ set hidden                    " Allow unwritten buffers
 " VUNDLE PLUGIN MANAGEMENT
 "-----------------------------------------------------------------------------
 set rtp+=~/.vim/bundle/Vundle.vim    " Set the runtime path to include Vundle
-call vundle#begin()                  " Initialize vundle
+call vundle#begin(get(g:, "oratos_vundle_path", expand("$HOME/.vim/bundle", 1))) " Initialize vundle
 Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage Vundle
 Plugin 'ctrlpvim/ctrlp.vim'          " Quick file navigation
 Plugin 'tpope/vim-commentary'        " Quickly comment lines out and in
@@ -28,6 +28,7 @@ Plugin 'regreplop.vim'               " Replace with a specified register
 Plugin 'kana/vim-textobj-user'       " Needed for below
 Plugin 'pianohacker/vim-indented-paragraph'
 Plugin 'pianohacker/vim-textobj-variable-segment'
+execute get(g:, "oratos_vundle_extra_plugins", "")
 call vundle#end()                    " Complete vunde initialization
 
 " detect file type, turn on that type's plugins and indent preferences
@@ -113,7 +114,6 @@ set nowrap              " don't wrap lines eva!
 
 colorscheme lucius      " color scheme
 set cursorline          " highlight current line
-set highlight=sbr       " invert and bold status line
 let loaded_matchparen = 1
 
 set t_Co=256            " set 256 color
