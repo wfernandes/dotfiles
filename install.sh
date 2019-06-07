@@ -12,6 +12,7 @@ fi
 if [[ "$flag" = "-a" ]]; then
     LINK_DOTFILES=true
     INIT_VIM=true
+    INIT_NVIM=true
 elif [[ "$flag" = "-l" ]]; then
     LINK_DOTFILES=true
 elif [[ "$flag" = "-p" ]]; then
@@ -50,7 +51,5 @@ if [[ "$INIT_VIM" = "true" ]]; then
     initialize_vim_plugins
 fi
 if [[ "$INIT_NVIM" = "true" ]]; then
-    mkdir -p ~/.config
-    ln -is $PWD/nvim ~/.config/nvim
     initialize_nvim_plugins
 fi
