@@ -179,6 +179,9 @@ nmap <silent> <leader>ev :edit $MYVIMRC<cr>
 " load vimrc into memory
 nmap <silent> <leader>ee :source $MYVIMRC<cr>
 
+nnoremap <leader>s :w<cr>
+nnoremap <leader>q :x<cr>
+
 " clear the search buffer when hitting space
 nnoremap <space> :nohlsearch<cr>
 
