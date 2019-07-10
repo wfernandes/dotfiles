@@ -1,5 +1,6 @@
 tap "thoughtbot/formulae"
 
+brew "autojump"
 brew "direnv"
 brew "git-duet"
 brew "kubectl"
@@ -7,4 +8,5 @@ brew "kustomize"
 brew "neovim"
 brew "rcm"
 brew "ripgrep"
+brew "tmux"
 brew "vim"
