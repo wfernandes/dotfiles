@@ -26,3 +26,5 @@
 [filter "gitconfig-ignore-duet"]
 	smudge =
 	clean = sed -e '/^\\[user\\]/,/git-committer-email/d'
+[init]
+	templatedir = /Users/jeweaver/.git-template
