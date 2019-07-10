@@ -10,3 +10,9 @@ source $HOME/.vimrc
 set exrc " Allow .nvimrc files in project directories
 set inccommand=nosplit " Show the result of :s commands as they're typed
 set undofile " Persist undo across sessions
+
+let g:VM_maps = {}
+let g:VM_maps['Find Under'] = '<C-g>'
+let g:VM_maps['Find Subword Under'] = '<C-g>'
+let g:VM_maps['Add Cursor Up'] = '<M-Up>'
+let g:VM_maps['Add Cursor Down'] = '<M-Down>'
