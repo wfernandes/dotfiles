@@ -1,5 +1,10 @@
-tap 'thoughtbot/formulae'
+tap "thoughtbot/formulae"
 
-brew 'kustomize'
-brew 'rcm'
-brew 'ripgrep'
+brew "direnv"
+brew "git-duet"
+brew "kubectl"
+brew "kustomize"
+brew "neovim"
+brew "rcm"
+brew "ripgrep"
+brew "vim"
