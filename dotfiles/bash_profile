@@ -1,3 +1,7 @@
+export LC_ALL=en_US.UTF-8
+
+[ -f ~/.linuxify ] && . ~/.linuxify
+
 # login shell or osx non-login shell, just run .bashrc
 [ -f ~/.bashrc ] && . ~/.bashrc
 
