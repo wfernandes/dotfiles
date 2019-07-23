@@ -2,6 +2,7 @@ let g:oratos_vundle_path=expand("$HOME/.cache/nvim/bundle", 1)
 let g:oratos_vundle_extra_plugins="Plugin 'jonathanfilip/vim-lucius'
 \ | Plugin 'mg979/vim-visual-multi'
 \ | Plugin 'jremmen/vim-ripgrep'
+\ | Plugin 'tpope/vim-surround'
 \ | Plugin 'stefandtw/quickfix-reflector.vim'"
 set rtp+=~/.cache/nvim/bundle/Vundle.vim    " Set the runtime path to include Vundle
 

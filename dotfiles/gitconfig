@@ -23,6 +23,7 @@
 	sta=stash
 	sur="submodule update --init --recursive"
 	unstage="reset HEAD"
+	git = !git
 [filter "gitconfig-ignore-duet"]
 	smudge =
 	clean = sed -e '/^\\[user\\]/,/git-committer-email/d'
