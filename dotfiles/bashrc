@@ -120,6 +120,10 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Move by whitespace-delimited words
+bind '"\eB": shell-backward-word'
+bind '"\eF": shell-forward-word'
+
 # enable ginkgo focus in editors
 export GINKGO_EDITOR_INTEGRATION=true
 
