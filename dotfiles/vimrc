@@ -142,6 +142,7 @@ set textwidth=78                " global text columns
 set formatoptions+=c            " don't break long lines less they are comments
 set formatoptions-=t            " don't break long lines
 
+set ignorecase                  " required for smartcase
 set hlsearch                    " highlight search results
 set smartcase                   " ignore case if lower, otherwise match case
 set incsearch                   " jump to results as I search
