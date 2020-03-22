@@ -1,10 +1,8 @@
 authors:
-  wf: Warren Fernandes; wfernandes
+  wf: Warren Fernandes; warrenf
   wff: Warren Fernandes
-  wfvmw: Warren Fernandes
 email:
-  domain: pivotal.io
+  domain: vmware.com
 email_addresses:
   wff: warren.f.fernandes@gmail.com
-  wfvmw: warrenf@vmware.com
 global: true
