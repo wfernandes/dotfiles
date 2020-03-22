@@ -21,20 +21,14 @@ function link_all_dotfiles {
     rcup -d dotfiles -S config/nvim -S vim -v
 }
 
-function update_submodules {
-    git submodule update --init --recursive
-}
-
 function initialize_nvim_plugins {
-    # install nvim plugins with vundle
-    nvim +PluginInstall +qall
+    nvim +PlugInstall +qall
 }
 
 brew bundle
 
 tic tmux-256color.terminfo
 
-update_submodules
 if [[ "$LINK_DOTFILES" = "true" ]]; then
     link_all_dotfiles
 fi

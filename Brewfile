@@ -1,5 +1,3 @@
-tap "thoughtbot/formulae"
-
 brew "autojump"
 brew "direnv"
 brew "git-duet"
