@@ -1,14 +1,10 @@
 authors:
-  bf: Ben Fuller; bfuller
-  dt: David Timm; dtimm
-  jw: Jesse Weaver; jeweaver
-  jk: Jason Keene; jkeene
   wf: Warren Fernandes; wfernandes
   wff: Warren Fernandes
-  ms: Melena Suliteanu; msuliteanu
-  hev: Adam Hevenor; ahevenor
+  wfvmw: Warren Fernandes
 email:
   domain: pivotal.io
 email_addresses:
   wff: warren.f.fernandes@gmail.com
+  wfvmw: warrenf@vmware.com
 global: true
