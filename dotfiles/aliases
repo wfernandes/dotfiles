@@ -12,7 +12,9 @@ alias gpr='git pull --rebase --autostash'
 alias grep='grep --color=auto'
 alias gs='git status'
 alias k=kubectl
-alias ll="ls -la"
+alias ll="ls -lah"
+alias la="ls -latrh"
 alias nocaps='/usr/bin/setxkbmap -layout us -option ctrl:nocaps'
 alias pbc='tmux show-buffer | DISPLAY=:0 xsel -b'
 alias vim='nvim'
+alias kuebctl='kubectl'
