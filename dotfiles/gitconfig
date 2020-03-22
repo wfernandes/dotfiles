@@ -29,3 +29,5 @@
 	clean = sed -e '/^\\[user\\]/,/git-committer-email/d'
 [init]
 	templatedir = /Users/pivotal/.git-template
+[rerere]
+	enabled = true
