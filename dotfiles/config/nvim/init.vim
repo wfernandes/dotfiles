@@ -1,3 +1,16 @@
+" -------------------------------------------------------------------------------------------------
+" Plugins
+" -------------------------------------------------------------------------------------------------
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'preservim/nerdtree'         " visual file hierarchy navigation
+Plug 'ctrlpvim/ctrlp.vim'         " Quick file navigation
+Plug 'tpope/vim-commentary'       " Quickly comment lines out and in
+Plug 'jonathanfilip/vim-lucius'   " Colorscheme not included in nvim.
+Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi lines
+call plug#end()
+
 "------------------------------------------------------------------------------
 " GENERAL
 "------------------------------------------------------------------------------
@@ -6,56 +19,87 @@ set nocompatible              " Disable Vi compatability
 set mouse=a                   " Enable mouse in all modes
 set hidden                    " Allow unwritten buffers
 
-"-----------------------------------------------------------------------------
-" VUNDLE PLUGIN MANAGEMENT
-"-----------------------------------------------------------------------------
-set rtp+=~/.cache/nvim/bundle/Vundle.vim    " Set the runtime path to include Vundle
-call vundle#begin(expand("$HOME/.cache/nvim/bundle", 1)) " Initialize vundle
-Plugin 'VundleVim/Vundle.vim'        " Let Vundle manage Vundle
-Plugin 'ctrlpvim/ctrlp.vim'          " Quick file navigation
-Plugin 'tpope/vim-commentary'        " Quickly comment lines out and in
-Plugin 'tpope/vim-fugitive'          " Help formatting commit messages
-Plugin 'tpope/vim-dispatch'          " Allow background builds
-Plugin 'tpope/vim-unimpaired'        " Add normal mode aliases for commonly used ex commands
-Plugin 'fatih/vim-go'                " Helpful plugin for Golang dev
-Plugin 'AndrewRadev/splitjoin.vim'   " Enable vim-go to split structs into multi lines
-Plugin 'vim-scripts/bufkill.vim'     " Kill buffers and leave windows intact
-Plugin 'ervandew/supertab'           " Perform all completions with Tab
-Plugin 'scrooloose/nerdtree'         " Directory tree explorer
-Plugin 'gaving/vim-textobj-argument' " Function arguments as text objects
-Plugin 'vim-airline/vim-airline'     " Status line improvements
-Plugin 'regreplop.vim'               " Replace with a specified register
-Plugin 'kana/vim-textobj-user'       " Needed for below
-Plugin 'pianohacker/vim-indented-paragraph'
-Plugin 'pianohacker/vim-textobj-variable-segment'
-Plugin 'jonathanfilip/vim-lucius'    " Colorscheme not included in nvim.
-Plugin 'mg979/vim-visual-multi'      " Multiple cursors.
-Plugin 'jremmen/vim-ripgrep'         " :Rg for project wide search.
-Plugin 'tpope/vim-surround'          " Commands to add/remove surrounds (parentheses, brackets, etc.)
-Plugin 'stefandtw/quickfix-reflector.vim' " Allows editing of the entries in the quickfix list (works great with :Rg).
-call vundle#end()                    " Complete vunde initialization
+"------------------------------------------------------------------------------
+" APPEARANCE
+"------------------------------------------------------------------------------
+syntax on               " enable syntax highlighting
+set number              " show line numbers
+set ruler               " show lines in lower right
+set nowrap              " don't wrap lines eva!
 
-" detect file type, turn on that type's plugins and indent preferences
-filetype plugin indent on
+colorscheme lucius      " color scheme
+"set cursorline          " highlight current line
+let loaded_matchparen = 1
+
+set t_Co=256            " set 256 color
+set colorcolumn=80      " highlight col 80
+highlight ColorColumn ctermbg=235
+set listchars=tab:▸\ ,eol:¬,trail:· " show whitespace characters
+set list                " enable display of invisible characters
+
+" invisible character colors
+highlight NonText ctermfg=239
+highlight SpecialKey ctermfg=239
+
+"------------------------------------------------------------------------------
+" BEHAVIOR
+"------------------------------------------------------------------------------
+set exrc                         " Allow .nvimrc files in project directories
+"set inccommand=nosplit           " Show the result of :s commands as they're typed
+set undofile                     " Persist undo across sessions
+
+set backspace=indent,eol,start   " enable better backspacing
+set noswapfile                   " disable swap files
+set nowb                         " disable writing backup
+set textwidth=78                 " global text columns
+set formatoptions+=c             " don't break long lines less they are comments
+set formatoptions-=t             " don't break long lines
+
+set ignorecase                   " required for smartcase
+set hlsearch                     " highlight search results
+set smartcase                    " ignore case if lower, otherwise match case
+set incsearch                    " jump to results as I search
+set splitbelow                   " split panes on the bottom
+set splitright                   " split panes to the right
+
+set history=10000                " keep a longer history
+
+set wildmenu                     " allow for menu suggestions
+
+set autowrite                    " automatically write file on `:make`
+
+autocmd BufWritePre * :%s/\s\+$//e " strip trailing whitespace on save
+autocmd BufLeave * silent! wall    " save on lost focus
+
+" tab behavior
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" smaller indents for yaml
+autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
 
 "-----------------------------------------------------------------------------
 " VIM-GO CONFIG
 "-----------------------------------------------------------------------------
 let g:go_fmt_command = "goimports"
 
-" highlight go-vim
-highlight goSameId term=bold cterm=bold ctermbg=250 ctermfg=239
-set updatetime=100 " updates :GoInfo faster
-
 " vim-go command shortcuts
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t :wa<CR>:!clear;go test -v ./%:h<CR>
 autocmd FileType go nmap <leader>a <Plug>(go-alternate-edit)
+autocmd Filetype go nmap <leader>ah <Plug>(go-alternate-split)
+autocmd Filetype go nmap <leader>av <Plug>(go-alternate-vertical)
 autocmd FileType go nmap <leader>d :GoDeclsDir<CR>
 autocmd FileType go nmap <leader>g <Plug>(go-generate)
 autocmd FileType go nmap <leader>? :GoDoc<CR>
 autocmd FileType go nmap <leader>n :GoRename<CR>
 autocmd FileType go nmap <leader>l :GoMetaLinter<CR>
+
+" Show type information in status line
+let g:go_auto_type_info = 1
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -78,20 +122,14 @@ function! s:toggle_coverage()
 endfunction
 
 autocmd FileType go nmap <leader>c :<C-u>call <SID>toggle_coverage()<CR>
-
-" This will add new commands, called :A, :AV, :AS and :AT. Here :A works just
-" like :GoAlternate, it replaces the current buffer with the alternate file.
-" :AV will open a new vertical split with the alternate file. :AS will open
-" the alternate file in a new split view and :AT in a new tab.
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
-"-----------------------------------------------------------------------------
-" RUBY CONFIG
-"-----------------------------------------------------------------------------
-autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_types = 1
 
 "-----------------------------------------------------------------------------
 " CTRL-P CONFIG
@@ -104,92 +142,89 @@ let g:ctrlp_custom_ignore = {
 " stop setting git repo as root path
 let g:ctrlp_working_path_mode = ''
 
-"-----------------------------------------------------------------------------
-" nerd tree config
-"-----------------------------------------------------------------------------
+" -------------------------------------------------------------------------------------------------
+" NerdTree Config
+" -------------------------------------------------------------------------------------------------
 map <C-n> :NERDTreeToggle<CR>
-map \| :NERDTreeFind<CR>
-"------------------------------------------------------------------------------
-" APPEARANCE
-"------------------------------------------------------------------------------
-syntax on               " enable syntax highlighting
-set number              " show line numbers
-set ruler               " show lines in lower right
-set nowrap              " don't wrap lines eva!
-
-colorscheme lucius      " color scheme
-set cursorline          " highlight current line
-let loaded_matchparen = 1
-
-set t_Co=256            " set 256 color
-set colorcolumn=80      " highlight col 80
-highlight ColorColumn ctermbg=235
-set listchars=tab:▸\ ,eol:¬,trail:· " show whitespace characters
-set list                " enable display of invisible characters
-
-" invisible character colors
-highlight NonText ctermfg=239
-highlight SpecialKey ctermfg=239
 
 
-"------------------------------------------------------------------------------
-" supertab config
-"------------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
 
-"------------------------------------------------------------------------------
-" vim-visual-multi config
-"------------------------------------------------------------------------------
-let g:VM_maps = {}
-let g:VM_maps['Find Under'] = '<C-g>'
-let g:VM_maps['Find Subword Under'] = '<C-g>'
-let g:VM_maps['Add Cursor Up'] = '<M-Up>'
-let g:VM_maps['Add Cursor Down'] = '<M-Down>'
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" use signcolumns default. Original value: yes
+set signcolumn=auto
 
-"------------------------------------------------------------------------------
-" BEHAVIOR
-"------------------------------------------------------------------------------
-set exrc                        " Allow .nvimrc files in project directories
-set inccommand=nosplit          " Show the result of :s commands as they're typed
-set undofile                    " Persist undo across sessions
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-set backspace=indent,eol,start  " enable better backspacing
-set noswapfile                  " disable swap files
-set nowb                        " disable writing backup
-set textwidth=78                " global text columns
-set formatoptions+=c            " don't break long lines less they are comments
-set formatoptions-=t            " don't break long lines
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-set ignorecase                  " required for smartcase
-set hlsearch                    " highlight search results
-set smartcase                   " ignore case if lower, otherwise match case
-set incsearch                   " jump to results as I search
-set splitbelow                  " split panes on the bottom
-set splitright                  " split panes to the right
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 
-set history=10000               " keep a longer history
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-set wildmenu                    " allow for menu suggestions
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-set autowrite                   " automatically write file on `:make`
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
 
-autocmd BufWritePre * :%s/\s\+$//e " strip trailing whitespace on save
-autocmd BufLeave * silent! wall    " save on lost focus
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
-" tab behavior
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" smaller indents for yaml
-autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+" disabling this to allow CoC to handle go to definition
+let g:go_def_mapping_enabled = 0
 
 "------------------------------------------------------------------------------
 " LEADER MAPPINGS
 "------------------------------------------------------------------------------
-let mapleader = ","              " set leader
+"set leader
+let mapleader = ","
 
 " switch between files
 nnoremap <leader><leader> <c-^>
@@ -202,8 +237,8 @@ nmap <silent> <leader>ee :source $MYVIMRC<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>q :x<cr>
 
-" clear the search buffer when hitting space
-nnoremap <space> :nohlsearch<cr>
+" clear the search buffer when hitting <leader>space
+nnoremap <leader><space> :nohlsearch<cr>
 
 " reselect when indenting
 vnoremap < <gv
@@ -227,9 +262,3 @@ set laststatus=2
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
-call textobj#user#map('indentedparagraph', {
-\   '-': {
-\     'move-n': ')',
-\     'move-p': '(',
-\   }
-\ })
