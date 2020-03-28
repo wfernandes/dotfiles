@@ -20,11 +20,14 @@ To just initialize the vim plugins,
 
 ## Tmux and Tmate
 The `install.sh` will link the `tmate.conf` file into the home directory by
-default. However, it will add the followin alias for tmux.
-```
-alias tmux='tmux -f $HOME/workspace/oratos-dotfiles/tmux.conf'
-```
+default.
 
+
+If you plan to use tmate then you should alias tmux so that it directly points
+to the corresponding tmux.conf
+```
+alias tmux='tmux -f $HOME/workspace/dotfiles/dotfiles/tmux.conf'
+```
 This is done in order to get tmate and tmux to work along side each
 other.
 
