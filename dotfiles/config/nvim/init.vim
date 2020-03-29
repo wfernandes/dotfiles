@@ -238,7 +238,8 @@ nmap <silent> <leader>ee :source $MYVIMRC<cr>
 nnoremap <leader>s :w<cr>
 nnoremap <leader>q :x<cr>
 
-" clear the search buffer when hitting <leader>space
+" clear the search buffer when hitting <leader><space>
+" <space> is being used by COC
 nnoremap <leader><space> :nohlsearch<cr>
 
 " reselect when indenting
