@@ -253,10 +253,10 @@ set foldmethod=syntax
 set foldlevel=99
 
 " remove the need to hit c-w for navigating splits
-nmap <c-j> <c-w>j
-nmap <c-k> <c-w>k
-nmap <c-h> <c-w>h
-nmap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 set laststatus=2
 
 " resize windows more easily
