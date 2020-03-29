@@ -263,3 +263,13 @@ set laststatus=2
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" abbreviations
+" ^M --> <Ctrl-V><CR>
+iab tfunc func Test(t *testing.T){}<esc>3k2e
+iab trun t.Run(,func(t *testing.T){})<esc>2ke
+" Keeping this example of function call for future reference.
+" iab tfunc <C-R>=Testabbr()<CR><esc>3k2e
+" function! Testabbr()
+"     return "func Test(t *testing.T){}"
+" endfunction
+
