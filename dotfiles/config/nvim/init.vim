@@ -7,7 +7,8 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'preservim/nerdtree'         " visual file hierarchy navigation
 Plug 'ctrlpvim/ctrlp.vim'         " Quick file navigation
 Plug 'tpope/vim-commentary'       " Quickly comment lines out and in
-Plug 'tpope/vim-surround'          " Quickly surround text with stuff
+Plug 'tpope/vim-surround'         " Quickly surround text with stuff
+Plug 'tpope/vim-fugitive'         " Help formatting commit messages
 Plug 'jonathanfilip/vim-lucius'   " Colorscheme not included in nvim.
 Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi lines
 call plug#end()
