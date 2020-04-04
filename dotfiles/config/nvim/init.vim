@@ -11,6 +11,7 @@ Plug 'tpope/vim-surround'         " Quickly surround text with stuff
 Plug 'tpope/vim-fugitive'         " Help formatting commit messages
 Plug 'jonathanfilip/vim-lucius'   " Colorscheme not included in nvim.
 Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi lines
+Plug 'jremmen/vim-ripgrep'        " :Rg for project wide search.
 call plug#end()
 
 "------------------------------------------------------------------------------
