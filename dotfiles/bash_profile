@@ -14,3 +14,10 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# This was added after brew install bash-completion@2
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-bash-completion
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+source <(kubectl completion bash)
