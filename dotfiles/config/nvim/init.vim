@@ -84,6 +84,9 @@ set smarttab
 " smaller indents for yaml
 autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2 expandtab
 
+" show search count message when searching
+set shortmess-=S
+
 "-----------------------------------------------------------------------------
 " VIM-GO CONFIG
 "-----------------------------------------------------------------------------
