@@ -1,7 +1,7 @@
+brew "neovim"
 brew "autojump"
 brew "direnv"
 brew "git-duet"
-brew "neovim"
 brew "rcm"
 brew "ripgrep"
 brew "tmux"
