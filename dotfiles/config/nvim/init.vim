@@ -25,20 +25,20 @@ set hidden                    " Allow unwritten buffers
 "------------------------------------------------------------------------------
 " APPEARANCE
 "------------------------------------------------------------------------------
-syntax on               " enable syntax highlighting
-set relativenumber      " show relative line numbers
-set ruler               " show lines in lower right
-set nowrap              " don't wrap lines eva!
+syntax on                   " enable syntax highlighting
+set number relativenumber   " show hybrid line number
+set ruler                   " show lines in lower right
+set nowrap                  " don't wrap lines eva!
 
-colorscheme lucius      " color scheme
-"set cursorline          " highlight current line
+colorscheme lucius          " color scheme
+"set cursorline             " highlight current line
 let loaded_matchparen = 1
 
-set t_Co=256            " set 256 color
-set colorcolumn=80      " highlight col 80
+set t_Co=256                " set 256 color
+set colorcolumn=80          " highlight col 80
 highlight ColorColumn ctermbg=235
 set listchars=tab:▸\ ,eol:¬,trail:· " show whitespace characters
-set list                " enable display of invisible characters
+set list                            " enable display of invisible characters
 
 " invisible character colors
 highlight NonText ctermfg=239
