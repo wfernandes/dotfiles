@@ -279,3 +279,10 @@ iab trun t.Run(,func(t *testing.T){})<esc>2ke
 "     return "func Test(t *testing.T){}"
 " endfunction
 
+
+"------------------------------------------------------------------------------
+" terminal mode mappings
+"------------------------------------------------------------------------------
+
+" Use Esc to get out of terminal mode.
+:tnoremap <Esc> <C-\><C-n>
