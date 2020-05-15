@@ -35,7 +35,7 @@ function initialize_nvim_plugins {
 
 function initialize_nvim_coc_extensions {
     echo "Initialize Coc extensions"
-    nvim -c 'CocInstall -sync coc-json coc-yaml|q'
+    nvim -c 'CocInstall -sync coc-json coc-yaml coc-git |q'
 }
 
 function brew_bundle {
