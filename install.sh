@@ -55,3 +55,7 @@ if [[ "$INIT_NVIM" = "true" ]]; then
     initialize_nvim_plugins
     initialize_nvim_coc_extensions
 fi
+
+echo "Remember to install bash-completions---"
+echo "git"
+echo "kubectl"
