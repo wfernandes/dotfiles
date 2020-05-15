@@ -26,7 +26,7 @@ set hidden                    " Allow unwritten buffers
 " APPEARANCE
 "------------------------------------------------------------------------------
 syntax on               " enable syntax highlighting
-set number              " show line numbers
+set relativenumber      " show relative line numbers
 set ruler               " show lines in lower right
 set nowrap              " don't wrap lines eva!
 
