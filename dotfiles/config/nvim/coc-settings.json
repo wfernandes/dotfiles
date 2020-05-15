@@ -4,7 +4,11 @@
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"],
-      "disableWorkspaceFolders": true
+      "disableWorkspaceFolders": true,
+      "initializationOptions": {
+        "usePlaceholders": true,
+        "buildFlags": ["-tags=e2e"]
+      }
     }
   },
   "yaml.schemas":{
