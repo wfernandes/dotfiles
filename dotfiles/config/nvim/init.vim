@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Use release branch (recommened)
 Plug 'preservim/nerdtree'         " visual file hierarchy navigation
+Plug 'Xuyuanp/nerdtree-git-plugin' " git flags for nerdtree
 Plug 'ctrlpvim/ctrlp.vim'         " Quick file navigation
 Plug 'tpope/vim-commentary'       " Quickly comment lines out and in
 Plug 'tpope/vim-surround'         " Quickly surround text with stuff
