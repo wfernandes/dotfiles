@@ -28,6 +28,6 @@
 	smudge =
 	clean = sed -e '/^\\[user\\]/,/git-committer-email/d'
 [init]
-	templatedir = /Users/pivotal/.git-template
+	templatedir = ~/.git-template/template/
 [rerere]
 	enabled = true
