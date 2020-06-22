@@ -243,7 +243,9 @@ nmap <silent> <leader>ev :edit $MYVIMRC<cr>
 " load vimrc into memory
 nmap <silent> <leader>ee :source $MYVIMRC<cr>
 
+" save file
 nnoremap <leader>s :w<cr>
+" exit file
 nnoremap <leader>q :x<cr>
 
 " clear the search buffer when hitting <leader><space>
