@@ -14,6 +14,7 @@ Plug 'jonathanfilip/vim-lucius'   " Colorscheme not included in nvim.
 Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi lines
 Plug 'jremmen/vim-ripgrep'        " :Rg for project wide search.
 Plug 'cespare/vim-toml'           " TOML syntax highlighting
+Plug 'rust-lang/rust.vim'         " Rust support
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -156,7 +157,6 @@ let g:ctrlp_working_path_mode = ''
 map <C-n> :NERDTreeToggle<CR>
 map <C-n>f :NERDTreeFind<CR>
 
-
 " -------------------------------------------------------------------------------------------------
 " coc.nvim default settings
 " -------------------------------------------------------------------------------------------------
@@ -269,6 +269,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 set laststatus=2
+" display file path
+set statusline+=%f
 
 " resize windows more easily
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -291,3 +293,12 @@ iab trun t.Run(,func(t *testing.T){})<esc>2ke
 
 " Use Esc to get out of terminal mode.
 :tnoremap <Esc> <C-\><C-n>
+
+"------------------------------------------------------------------------------
+" RUST CONFIG
+"------------------------------------------------------------------------------
+let g:rustfmt_autosave = 1
+let g:syntastic_rust_checkers = ['cargo']
+autocmd FileType rust nmap <leader>b :Ccheck<CR>
+autocmd FileType rust nmap <leader>r :Crun<CR>
+
