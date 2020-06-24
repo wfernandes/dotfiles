@@ -18,6 +18,12 @@ To just initialize the vim plugins,
 ./install.sh -p
 ```
 
+## Other Reminders
+
+- Setup iterm with Alt-Forward and Alt-Backward keys. See [this
+  post][jump-forward-backward] or load the iterm-key-bindings.itermkeymap
+- Ensure `echo $BASH_VERSION` is >= v4
+
 ## Tmux and Tmate
 The `install.sh` will link the `tmate.conf` file into the home directory by
 default.
@@ -43,3 +49,5 @@ above.
 ### Resources
 - https://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
 - https://blog.carbonfive.com/2017/08/17/copying-and-pasting-with-tmux-2-4/
+
+[jump-forward-backward]: https://medium.com/@jonnyhaynes/jump-forwards-backwards-and-delete-a-word-in-iterm2-on-mac-os-43821511f0a
