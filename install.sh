@@ -60,3 +60,4 @@ fi
 echo "Remember to install bash-completions---"
 echo "git"
 echo "kubectl"
+echo "rustup help completions"

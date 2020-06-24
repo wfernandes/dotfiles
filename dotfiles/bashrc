@@ -17,19 +17,19 @@ export EDITOR=nvim
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    source /usr/share/bash-completion/bash_completion
-  elif [ -f /usr/local/etc/bash_completion ]; then
-    source /usr/local/etc/bash_completion
-  fi
-fi
+# if ! shopt -oq posix; then
+#   if [ -f /usr/share/bash-completion/bash_completion ]; then
+#     source /usr/share/bash-completion/bash_completion
+#   elif [ -f /usr/local/etc/bash_completion ]; then
+#     source /usr/local/etc/bash_completion
+#   fi
+# fi
 
-if [ -d /usr/local/etc/bash_completion.d ]; then
-    for line in $(find /usr/local/etc/bash_completion.d -iname "*.sh"); do
-        source $line
-    done
-fi
+# if [ -d /usr/local/etc/bash_completion.d ]; then
+#     for line in $(find /usr/local/etc/bash_completion.d -iname "*.sh"); do
+#         source $line
+#     done
+# fi
 
 # source profile that is shared between shells
 if [ -f ~/.common_profile ]; then
