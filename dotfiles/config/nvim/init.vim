@@ -293,6 +293,8 @@ iab trun t.Run(,func(t *testing.T){})<esc>2ke
 
 " Use Esc to get out of terminal mode.
 :tnoremap <Esc> <C-\><C-n>
+" Ctrl+t shortcut to open terminal in vertical split
+nnoremap <c-t> :vsplit term://bash<CR>
 
 "------------------------------------------------------------------------------
 " RUST CONFIG
