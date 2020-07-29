@@ -280,6 +280,7 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 " ^M --> <Ctrl-V><CR>
 iab tfunc func Test(t *testing.T){}<esc>3k2e
 iab trun t.Run(,func(t *testing.T){})<esc>2ke
+iab ierr if err != nil {}<esc>ko
 " Keeping this example of function call for future reference.
 " iab tfunc <C-R>=Testabbr()<CR><esc>3k2e
 " function! Testabbr()
