@@ -309,4 +309,5 @@ let g:rustfmt_autosave = 1
 let g:syntastic_rust_checkers = ['cargo']
 autocmd FileType rust nmap <leader>b :Ccheck<CR>
 autocmd FileType rust nmap <leader>r :Crun<CR>
+autocmd FileType rust nmap <leader>t :Ctest<CR>
 
