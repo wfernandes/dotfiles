@@ -279,7 +279,6 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 " Insert newline without entering insert mode and staying on original line
 nnoremap <leader>O O<Esc>j
 nnoremap <leader>o o<Esc>k
-nnoremap <c-o> o<Esc>k
 
 " abbreviations
 " ^M --> <Ctrl-V><CR>
