@@ -154,7 +154,7 @@ let g:ctrlp_working_path_mode = ''
 " -------------------------------------------------------------------------------------------------
 " NerdTree Config
 " -------------------------------------------------------------------------------------------------
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggleVCS<CR>
 map <C-n>f :NERDTreeFind<CR>
 
 " -------------------------------------------------------------------------------------------------
@@ -255,6 +255,11 @@ nnoremap <leader><space> :nohlsearch<cr>
 " reselect when indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" search for selected text in visual mode
+" Press // to search for next occurrence of the text. Then n for next.
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " clipboard fusion!
 "set clipboard^=unnamed clipboard^=unnamedplus

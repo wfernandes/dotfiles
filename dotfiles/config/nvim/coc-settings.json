@@ -1,4 +1,5 @@
 {
+  "coc.preferences.timeout": 9000,
   "languageserver": {
     "golang": {
       "command": "gopls",
