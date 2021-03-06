@@ -4,7 +4,6 @@ export GIT_DUET_SET_GIT_USER_CONFIG=1
 export GIT_DUET_CO_AUTHORED_BY=1
 
 export PATH=~/bin:~/.bin:~/go/bin:/usr/local/go/bin:$PATH
-export PATH="/Users/wfernandes/go/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
 
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH

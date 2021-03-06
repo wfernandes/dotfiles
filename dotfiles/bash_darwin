@@ -1,1 +1,9 @@
 export CLICOLOR=1
+export PATH="/Users/wfernandes/go/src/k8s.io/kubernetes/third_party/etcd:${PATH}"
+
+# This was added after brew install bash-completion@2
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-bash-completion
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+
+source <(kubectl completion bash)
