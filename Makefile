@@ -17,7 +17,7 @@ brew: ## Brew install
 
 .PHONY: link-dotfiles
 link-dotfiles: ## Link dotfiles
-	 rcup -d dotfiles -S config/nvim -S vim -v
+	 rcup -d dotfiles -S config/nvim -S config/alacritty -S vim -v
 
 .PHONY: init-nvim
 init-nvim: ## Initialize nvim plugins and coc extensions
