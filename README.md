@@ -2,6 +2,8 @@
 
 ## Install Dotfiles
 
+NOTE: NEED TO UPDATE THIS FOR LINUX. USE MAKEFILE.
+
 ```
 ./install.sh
 ```
@@ -20,7 +22,15 @@ To just initialize the vim plugins,
 
 ## Other Reminders
 
-- Setup iterm with Alt-Forward and Alt-Backward keys. See [this
+### CoC
+Remember to install the following in vim with :CocInstall
+- coc-git
+  For seeing changes in the git file.
+- coc-yaml
+  For yaml changes
+
+### Terminal
+- For MacOS, Setup iterm with Alt-Forward and Alt-Backward keys. See [this
   post][jump-forward-backward] or load the iterm-key-bindings.itermkeymap
 - Ensure `echo $BASH_VERSION` is >= v4
 
