@@ -11,10 +11,19 @@ alias gpp='git pull --rebase --autostash && git push'
 alias gpr='git pull --rebase --autostash'
 alias grep='grep --color=auto'
 alias gs='git status'
-alias k=kubectl
 alias ll="ls -lah"
 alias la="ls -latrh"
 alias nocaps='/usr/bin/setxkbmap -layout us -option ctrl:nocaps'
 alias pbc='tmux show-buffer | DISPLAY=:0 xsel -b'
 alias vim='nvim'
+
+# Kubernetes
 alias kuebctl='kubectl'
+alias k=kubectl
+
+# Strata
+alias mavrestart="sudo service maverics restart"
+alias mavstatus="sudo service maverics status"
+alias mavlogs="journalctl --identifier=maverics --follow"
+alias mavedit="sudoedit /etc/maverics/maverics.yaml"
+alias maveditenv="sudoedit /etc/maverics/maverics.env"
