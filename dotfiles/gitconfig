@@ -31,3 +31,5 @@
 	templatedir = ~/.git-template/template/
 [rerere]
 	enabled = true
+[pull]
+	ff = only
