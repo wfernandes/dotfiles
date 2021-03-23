@@ -1,8 +1,9 @@
 authors:
-  wf: Warren Fernandes; warrenf
+  wf: Warren Fernandes; warren
   wff: Warren Fernandes
 email:
-  domain: vmware.com
+  domain: strata.io
 email_addresses:
+  wf: 2303039+wfernandes@users.noreply.github.com
   wff: warren.f.fernandes@gmail.com
 global: true
