@@ -256,6 +256,11 @@ nnoremap <leader><space> :nohlsearch<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+" map W to w
+command W w
+command Wq wq
+command Q q
+
 " search for selected text in visual mode
 " Press // to search for next occurrence of the text. Then n for next.
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
