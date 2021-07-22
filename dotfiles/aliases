@@ -17,12 +17,17 @@ alias nocaps='/usr/bin/setxkbmap -layout us -option ctrl:nocaps'
 alias pbc='tmux show-buffer | DISPLAY=:0 xsel -b'
 alias vim='nvim'
 
+# Remove local branches whose remotes have been deleted.
+alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{print \$1}' | xargs -r git branch -D"
+
 # Kubernetes
 alias kuebctl='kubectl'
 alias k=kubectl
 
 # Strata
 alias mavrestart="sudo service maverics restart"
+alias mavstart="sudo service maverics start"
+alias mavstop="sudo service maverics stop"
 alias mavstatus="sudo service maverics status"
 alias mavlogs="journalctl --identifier=maverics --follow"
 alias mavedit="sudoedit /etc/maverics/maverics.yaml"
