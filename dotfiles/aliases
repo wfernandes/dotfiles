@@ -20,6 +20,12 @@ alias vim='nvim'
 # Remove local branches whose remotes have been deleted.
 alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{print \$1}' | xargs -r git branch -D"
 
+# Linux specific
+# This opens the UI file manager.
+alias open='xdg-open'
+# Copy input from stdin into paste buffer.
+alias pbcopy='xclip -sel clip -in'
+
 # Kubernetes
 alias kuebctl='kubectl'
 alias k=kubectl
@@ -32,3 +38,5 @@ alias mavstatus="sudo service maverics status"
 alias mavlogs="journalctl --identifier=maverics --follow"
 alias mavedit="sudoedit /etc/maverics/maverics.yaml"
 alias maveditenv="sudoedit /etc/maverics/maverics.env"
+
+alias devmaverics="grc sudo /home/strata/workspace/maverics/bin/maverics"
