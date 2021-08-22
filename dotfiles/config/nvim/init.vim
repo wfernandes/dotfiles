@@ -11,6 +11,7 @@ Plug 'tpope/vim-commentary'       " Quickly comment lines out and in
 Plug 'tpope/vim-surround'         " Quickly surround text with stuff
 Plug 'tpope/vim-fugitive'         " Help formatting commit messages
 Plug 'jonathanfilip/vim-lucius'   " Colorscheme not included in nvim.
+Plug 'morhetz/gruvbox'
 Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi lines
 Plug 'jremmen/vim-ripgrep'        " :Rg for project wide search.
 Plug 'cespare/vim-toml'           " TOML syntax highlighting
@@ -33,7 +34,7 @@ set number relativenumber   " show hybrid line number
 set ruler                   " show lines in lower right
 set nowrap                  " don't wrap lines eva!
 
-colorscheme lucius          " color scheme
+colorscheme gruvbox          " color scheme
 "set cursorline             " highlight current line
 let loaded_matchparen = 1
 
