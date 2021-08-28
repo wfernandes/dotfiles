@@ -23,4 +23,4 @@ link-dotfiles: ## Link dotfiles
 init-nvim: ## Initialize nvim plugins and coc extensions
 	 nvim +PlugInstall +qall
 	## https://github.com/neoclide/coc-rls
-	 nvim -c 'CocInstall -sync coc-json coc-yaml coc-git coc-rls |q'
+	 nvim -c 'CocInstall -sync coc-json coc-yaml coc-git coc-rls coc-tsserver|q'

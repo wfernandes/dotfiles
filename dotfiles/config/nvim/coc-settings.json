@@ -1,5 +1,11 @@
 {
   "coc.preferences.timeout": 9000,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -12,5 +18,9 @@
       }
     }
   },
-  "yaml.schemas":{}
+  "yaml.schemas":{},
+  "typescript.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "javascript.format.enabled": true,
+  "tsserver.implicitProjectConfig.checkJs": true
 }

@@ -16,6 +16,13 @@ Plug 'AndrewRadev/splitjoin.vim'  " Enable vim-go to split structs into multi li
 Plug 'jremmen/vim-ripgrep'        " :Rg for project wide search.
 Plug 'cespare/vim-toml'           " TOML syntax highlighting
 Plug 'rust-lang/rust.vim'         " Rust support
+Plug 'yuezk/vim-js'               " Adding Javascript support for React dev env.
+Plug 'maxmellon/vim-jsx-pretty'     " JSX (Javascript XML extension).
+Plug 'peitalin/vim-jsx-typescript'  " TSX.
+Plug 'HerringtonDarkholme/yats.vim' " TypeScript syntax highlighting.
+Plug 'leafgarland/typescript-vim'   " Typesecript syntax and other settings.
+Plug 'pangloss/vim-javascript'      " Javascript syntax and indentation.
+
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -162,6 +169,9 @@ map <C-n>f :NERDTreeFind<CR>
 " coc.nvim default settings
 " -------------------------------------------------------------------------------------------------
 
+" Install Coc Extensions on Coc Server start.
+let g:coc_global_extensions = ['coc-git', 'coc-yaml', 'coc-rls', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-html']
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
@@ -302,6 +312,11 @@ iab ierr if err != nil {}<esc>ko
 "     return "func Test(t *testing.T){}"
 " endfunction
 
+" React TDD
+iab desc describe('', () => {});<esc>kewl
+iab beac beforeEach('', () => {});<esc>kewl
+iab it it('', () => {});<esc>kl
+
 
 "------------------------------------------------------------------------------
 " terminal mode mappings
@@ -320,4 +335,12 @@ let g:syntastic_rust_checkers = ['cargo']
 autocmd FileType rust nmap <leader>b :Ccheck<CR>
 autocmd FileType rust nmap <leader>r :Crun<CR>
 autocmd FileType rust nmap <leader>t :Ctest<CR>
+
+
+"------------------------------------------------------------------------------
+" REACT/JAVASCRIPT CONFIG
+"------------------------------------------------------------------------------
+
+" NOTE: Javascript plugins were derived from the following blog post.
+" https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 
