@@ -170,7 +170,7 @@ map <C-n>f :NERDTreeFind<CR>
 " -------------------------------------------------------------------------------------------------
 
 " Install Coc Extensions on Coc Server start.
-let g:coc_global_extensions = ['coc-git', 'coc-yaml', 'coc-rls', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-html']
+let g:coc_global_extensions = ['coc-git', 'coc-yaml', 'coc-rls', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-html', 'coc-prettier', 'coc-eslint']
 
 " if hidden is not set, TextEdit might fail.
 set hidden

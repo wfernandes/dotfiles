@@ -22,5 +22,6 @@
   "typescript.autoClosingTags": true,
   "javascript.autoClosingTags": true,
   "javascript.format.enabled": true,
-  "tsserver.implicitProjectConfig.checkJs": true
+  "tsserver.implicitProjectConfig.checkJs": true,
+  "eslint.run": "onSave"
 }
