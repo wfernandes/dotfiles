@@ -159,6 +159,9 @@ let g:ctrlp_custom_ignore = {
 " stop setting git repo as root path
 let g:ctrlp_working_path_mode = ''
 
+" search through current open buffers.
+map <C-p>b :CtrlPBuffer<CR>
+
 " -------------------------------------------------------------------------------------------------
 " NerdTree Config
 " -------------------------------------------------------------------------------------------------
