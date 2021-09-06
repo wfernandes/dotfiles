@@ -23,5 +23,13 @@
   "javascript.autoClosingTags": true,
   "javascript.format.enabled": true,
   "tsserver.implicitProjectConfig.checkJs": true,
-  "eslint.run": "onSave"
+  "eslint.run": "onSave",
+  "eslint.options": {
+      "useEslintrc": true,
+      "baseConfig": ".eslintrc"
+  },
+  "prettier.tabWidth": 4,
+  "prettier.printWidth": 200,
+  "prettier.bracketSpacing": false,
+  "prettier.eslintIntegration": true
 }
