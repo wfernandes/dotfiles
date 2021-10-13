@@ -40,3 +40,6 @@ alias mavedit="sudoedit /etc/maverics/maverics.yaml"
 alias maveditenv="sudoedit /etc/maverics/maverics.env"
 
 alias devmaverics="grc sudo /home/strata/workspace/maverics/bin/maverics"
+
+# Docker Linux
+alias docker="sudo /usr/bin/docker"
