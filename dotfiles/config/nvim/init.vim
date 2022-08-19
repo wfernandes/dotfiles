@@ -107,6 +107,7 @@ let g:go_fmt_command = "goimports"
 " vim-go command shortcuts
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t :wa<CR>:!clear;go test -v ./%:h<CR>
+autocmd FileType go nmap <leader>T :GoTestFunc<CR>
 autocmd FileType go nmap <leader>a <Plug>(go-alternate-edit)
 autocmd Filetype go nmap <leader>ah <Plug>(go-alternate-split)
 autocmd Filetype go nmap <leader>av <Plug>(go-alternate-vertical)
