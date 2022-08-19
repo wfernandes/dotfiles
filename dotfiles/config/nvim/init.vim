@@ -22,6 +22,7 @@ Plug 'peitalin/vim-jsx-typescript'  " TSX.
 Plug 'HerringtonDarkholme/yats.vim' " TypeScript syntax highlighting.
 Plug 'leafgarland/typescript-vim'   " Typesecript syntax and other settings.
 Plug 'pangloss/vim-javascript'      " Javascript syntax and indentation.
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 
