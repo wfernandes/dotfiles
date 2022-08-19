@@ -340,9 +340,9 @@ iab ierr if err != nil {}<esc>ko
 " endfunction
 
 " React TDD
-iab desc describe('', () => {});<esc>kewl
-iab beac beforeEach('', () => {});<esc>kewl
-iab it it('', () => {});<esc>kl
+" iab desc describe('', () => {});<esc>kewl
+" iab beac beforeEach('', () => {});<esc>kewl
+" iab it it('', () => {});<esc>kl
 
 
 "------------------------------------------------------------------------------
