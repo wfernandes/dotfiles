@@ -4,7 +4,7 @@
 [alias]
 	blog="log origin/master... --left-right"
 	br=branch
-	ci=duet-commit
+	ci=commit --signoff
 	co=checkout
 	dc=diff --cached
 	di=diff
