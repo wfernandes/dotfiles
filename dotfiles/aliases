@@ -25,6 +25,7 @@ alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{prin
 alias open='xdg-open'
 # Copy input from stdin into paste buffer.
 alias pbcopy='xclip -sel clip -in'
+alias pbpaste='xclip -o >'
 
 # Kubernetes
 alias kuebctl='kubectl'
