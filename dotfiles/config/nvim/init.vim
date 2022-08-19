@@ -48,7 +48,7 @@ let loaded_matchparen = 1
 
 set t_Co=256                " set 256 color
 set colorcolumn=85          " highlight col
-highlight ColorColumn ctermbg=235
+highlight ColorColumn ctermbg=236
 set listchars=tab:▸\ ,eol:¬,trail:· " show whitespace characters
 set list                            " enable display of invisible characters
 
