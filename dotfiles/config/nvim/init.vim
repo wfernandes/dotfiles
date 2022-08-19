@@ -66,7 +66,7 @@ set undofile                     " Persist undo across sessions
 set backspace=indent,eol,start   " enable better backspacing
 set noswapfile                   " disable swap files
 set nowb                         " disable writing backup
-set textwidth=78                 " global text columns
+set textwidth=85                 " global text columns
 set formatoptions+=c             " don't break long lines less they are comments
 set formatoptions-=t             " don't break long lines
 
