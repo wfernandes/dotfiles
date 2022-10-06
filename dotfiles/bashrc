@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##############################################################################
 # INIT
 ##############################################################################
@@ -8,6 +10,9 @@
 platform_script=~/.bash_`uname | awk '{ print tolower($0) }'`
 [ -f $platform_script ] && . $platform_script
 unset platform_script
+
+# Silence bash deprecation warning in new Mac OS.
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ##############################################################################
 # GENERAL
