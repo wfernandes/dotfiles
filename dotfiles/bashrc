@@ -129,49 +129,24 @@ bind '"\e[B": history-search-forward'
 bind '"\eB": shell-backward-word'
 bind '"\eF": shell-forward-word'
 
-# enable ginkgo focus in editors
-export GINKGO_EDITOR_INTEGRATION=true
-
-# source /usr/local/share/chruby/chruby.sh
-# source /usr/local/share/chruby/auto.sh
+# bind '"\e[1;5C": forward-word'
+# bind '"\e[1;5D": backward-word'
 
 if [ -f $HOME/.cargo/env ]; then
     source $HOME/.cargo/env
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/pivotal/Downloads/google-cloud-sdk/completion.bash.inc'; fi
-
 export GEM_HOME=$HOME/.gems
 export PATH=$GEM_HOME/bin:$PATH
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
-# linux
-[ -s ~/.autojump/etc/profile.d/autojump.sh ] && source ~/.autojump/etc/profile.d/autojump.sh
-# darwin
-[ -s /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
 export PATH="$HOME/.cargo/bin:$PATH"
-export VAULT_ADDR=https://vault.oratos.ci.cf-app.com
 
-complete -C /home/pivotal/bin/vault vault
-
-eval "$(direnv hook bash)"
-
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # https://werat.github.io/2017/02/04/tmux-ssh-agent-forwarding.html
 if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
 
-# add kubebuilder to path
-#export PATH=$PATH:/usr/local/kubebuilder/bin
-
-#source <(kubectl completion bash)
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
