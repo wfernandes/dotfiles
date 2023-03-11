@@ -21,26 +21,17 @@ alias vim='nvim'
 alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{print \$1}' | xargs -r git branch -D"
 
 # Linux specific
+if [[ $(uname -s) == 'Linux' ]]; then
 # This opens the UI file manager.
 alias open='xdg-open'
 # Copy input from stdin into paste buffer.
 alias pbcopy='xclip -sel clip -in'
 alias pbpaste='xclip -o >'
+# Docker Linux
+alias docker="sudo /usr/bin/docker"
+fi
 
 # Kubernetes
 alias kuebctl='kubectl'
 alias k=kubectl
 
-# Strata
-alias mavrestart="sudo service maverics restart"
-alias mavstart="sudo service maverics start"
-alias mavstop="sudo service maverics stop"
-alias mavstatus="sudo service maverics status"
-alias mavlogs="journalctl --identifier=maverics --follow"
-alias mavedit="sudoedit /etc/maverics/maverics.yaml"
-alias maveditenv="sudoedit /etc/maverics/maverics.env"
-
-alias devmaverics="grc sudo /home/strata/workspace/maverics/bin/maverics"
-
-# Docker Linux
-alias docker="sudo /usr/bin/docker"
