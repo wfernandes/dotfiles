@@ -4,15 +4,28 @@ export LC_ALL=en_US.UTF-8
 
 # login shell or osx non-login shell, just run .bashrc
 [ -f ~/.bashrc ] && . ~/.bashrc
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/bin/google-cloud-sdk/path.bash.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.bash.inc'; fi
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # autojump
+[ -s ~/.autojump/etc/profile.d/autojump.sh ] && source ~/.autojump/etc/profile.d/autojump.sh
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+# git completion
+if [ -f '/Users/wfernandes/workspace/dotfiles/.git-completion.bash' ]; then . '/Users/wfernandes/workspace/dotfiles/.git-completion.bash'; fi
+
 
 . "$HOME/.cargo/env"
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/wfernandes/google-cloud-sdk/path.bash.inc' ]; then . '/Users/wfernandes/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/wfernandes/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/wfernandes/google-cloud-sdk/completion.bash.inc'; fi
+
+
+
+# Buildpacks pack cli completion.
+. $(pack completion)
