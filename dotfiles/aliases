@@ -22,13 +22,13 @@ alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{prin
 
 # Linux specific
 if [[ $(uname -s) == 'Linux' ]]; then
-# This opens the UI file manager.
-alias open='xdg-open'
-# Copy input from stdin into paste buffer.
-alias pbcopy='xclip -sel clip -in'
-alias pbpaste='xclip -o >'
-# Docker Linux
-alias docker="sudo /usr/bin/docker"
+  # This opens the UI file manager.
+  alias open='xdg-open'
+  # Copy input from stdin into paste buffer.
+  alias pbcopy='xclip -sel clip -in'
+  alias pbpaste='xclip -o >'
+  # Docker Linux
+  alias docker="sudo /usr/bin/docker"
 fi
 
 # Kubernetes
