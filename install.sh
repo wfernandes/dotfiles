@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 BREW_BUNDLE=false
 LINK_DOTFILES=false
