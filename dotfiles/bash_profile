@@ -1,10 +1,7 @@
 export LC_ALL=en_US.UTF-8
 
-[ -f ~/.linuxify ] && . ~/.linuxify
-
 # login shell or osx non-login shell, just run .bashrc
 [ -f ~/.bashrc ] && . ~/.bashrc
-export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # autojump
 [ -s ~/.autojump/etc/profile.d/autojump.sh ] && source ~/.autojump/etc/profile.d/autojump.sh
@@ -15,7 +12,6 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 if [ -f '/Users/wfernandes/workspace/dotfiles/.git-completion.bash' ]; then . '/Users/wfernandes/workspace/dotfiles/.git-completion.bash'; fi
 
 
-. "$HOME/.cargo/env"
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 

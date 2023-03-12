@@ -94,9 +94,6 @@ fi
 ##############################################################################
 # CUSTOM ADDITIONS
 ##############################################################################
-# local stuff
-[ -f ~/.bash_local ] && . ~/.bash_local
-
 # fix ssh-agent
 #SSH_ENV="$HOME/.ssh/environment"
 
@@ -132,14 +129,10 @@ bind '"\eF": shell-forward-word'
 # bind '"\e[1;5C": forward-word'
 # bind '"\e[1;5D": backward-word'
 
-if [ -f $HOME/.cargo/env ]; then
-    source $HOME/.cargo/env
-fi
-
 export GEM_HOME=$HOME/.gems
 export PATH=$GEM_HOME/bin:$PATH
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
 
 
 # https://werat.github.io/2017/02/04/tmux-ssh-agent-forwarding.html
