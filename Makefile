@@ -11,6 +11,10 @@ all: ## Run all commands below
 	$(MAKE) init-nvim
 	tic tmux-256color.terminfo
 
+.PHONY: omz
+omz: ## Oh-My-Zsh install
+	 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 .PHONY: brew
 brew: ## Brew install
 	 brew bundle
