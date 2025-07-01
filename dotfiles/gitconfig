@@ -23,6 +23,7 @@
 	sta=stash
 	sur="submodule update --init --recursive"
 	unstage="reset HEAD"
+	pushf="push --force-with-lease"
 	git = !git
 [filter "gitconfig-ignore-duet"]
 	smudge =
