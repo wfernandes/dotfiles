@@ -1,6 +1,7 @@
 # vim: set noet :
 [push]
 	default = current
+	autoSetupRemote = true
 [alias]
 	blog="log origin/master... --left-right"
 	br=branch
