@@ -16,6 +16,5 @@ link-dotfiles: ## Link dotfiles via rcup
 	rcup -d dotfiles -S config/nvim -S config/alacritty -S vim -v
 
 .PHONY: init-nvim
-init-nvim: ## Initialize nvim plugins and CoC extensions
-	nvim +PlugInstall +qall
-	nvim -c 'CocInstall -sync coc-json coc-yaml coc-git coc-rls coc-tsserver coc-css coc-html coc-prettier coc-eslint|q'
+init-nvim: ## Sync nvim plugins via lazy.nvim (LSP servers auto-install on first open)
+	nvim --headless "+Lazy! sync" +qa

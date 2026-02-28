@@ -53,11 +53,9 @@ init_nvim() {
         warn "nvim not found, skipping plugin install"
         return
     fi
-    info "Installing nvim plugins..."
-    nvim +PlugInstall +qall
-    info "Installing CoC extensions..."
-    nvim -c 'CocInstall -sync coc-json coc-yaml coc-git coc-rls coc-tsserver coc-css coc-html coc-prettier coc-eslint|q'
-    success "Neovim ready"
+    info "Installing nvim plugins via lazy.nvim..."
+    nvim --headless "+Lazy! sync" +qa
+    success "Neovim ready (LSP servers will install automatically on first open)"
 }
 
 # ── tmux terminfo ─────────────────────────────────────────────────────────────
