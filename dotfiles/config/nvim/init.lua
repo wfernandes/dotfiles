@@ -160,17 +160,18 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "go", "typescript", "tsx", "javascript", "rust",
-          "json", "yaml", "toml", "lua", "markdown",
-        },
-        highlight = { enable = true },
-        indent    = { enable = true },
-      })
+    opts = {
+      ensure_installed = {
+        "go", "typescript", "tsx", "javascript", "rust",
+        "json", "yaml", "toml", "lua", "markdown",
+      },
+      highlight = { enable = true },
+      indent    = { enable = true },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
       vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+      vim.opt.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
     end,
   },
 
@@ -194,27 +195,31 @@ require("lazy").setup({
         automatic_installation = true,
       })
 
-      local lspconfig    = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- Requiring lspconfig registers its default server configs (cmd, filetypes,
+      -- root_markers) into vim.lsp.config without the deprecated .setup() calls.
+      require("lspconfig")
 
-      local on_attach = function(_, bufnr)
-        local bopts = { noremap = true, silent = true, buffer = bufnr }
-        map("n", "gd",         vim.lsp.buf.definition,      bopts)
-        map("n", "gy",         vim.lsp.buf.type_definition,  bopts)
-        map("n", "gi",         vim.lsp.buf.implementation,   bopts)
-        map("n", "gr",         vim.lsp.buf.references,       bopts)
-        map("n", "K",          vim.lsp.buf.hover,            bopts)
-        map("n", "<leader>rn", vim.lsp.buf.rename,           bopts)
-        map("n", "<leader>ac", vim.lsp.buf.code_action,      bopts)
-        map("n", "[c",         vim.diagnostic.goto_prev,     bopts)
-        map("n", "]c",         vim.diagnostic.goto_next,     bopts)
-        map("n", "<space>a",   vim.diagnostic.setloclist,    bopts)
-        map("n", "<space>o",   "<cmd>lua vim.lsp.buf.document_symbol()<CR>", bopts)
-      end
+      -- Global: capabilities + keymaps applied to every LSP attach
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        on_attach = function(_, bufnr)
+          local bopts = { noremap = true, silent = true, buffer = bufnr }
+          map("n", "gd",         vim.lsp.buf.definition,     bopts)
+          map("n", "gy",         vim.lsp.buf.type_definition, bopts)
+          map("n", "gi",         vim.lsp.buf.implementation,  bopts)
+          map("n", "gr",         vim.lsp.buf.references,      bopts)
+          map("n", "K",          vim.lsp.buf.hover,           bopts)
+          map("n", "<leader>rn", vim.lsp.buf.rename,          bopts)
+          map("n", "<leader>ac", vim.lsp.buf.code_action,     bopts)
+          map("n", "[c",         vim.diagnostic.goto_prev,    bopts)
+          map("n", "]c",         vim.diagnostic.goto_next,    bopts)
+          map("n", "<space>a",   vim.diagnostic.setloclist,   bopts)
+          map("n", "<space>o",   vim.lsp.buf.document_symbol, bopts)
+        end,
+      })
 
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-        on_attach    = on_attach,
+      -- Per-server overrides
+      vim.lsp.config("gopls", {
         settings = {
           gopls = {
             gofumpt         = true,
@@ -224,16 +229,7 @@ require("lazy").setup({
         },
       })
 
-      lspconfig.ts_ls.setup({ capabilities = capabilities, on_attach = on_attach })
-
-      lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
-
-      lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
-
-      lspconfig.yamlls.setup({ capabilities = capabilities, on_attach = on_attach })
-
-      lspconfig.html.setup({ capabilities = capabilities, on_attach = on_attach })
-      lspconfig.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
+      vim.lsp.enable({ "gopls", "ts_ls", "rust_analyzer", "jsonls", "yamlls", "html", "cssls" })
     end,
   },
 
