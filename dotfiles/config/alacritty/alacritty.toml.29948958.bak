@@ -284,8 +284,3 @@ semantic_escape_chars = ''',│`|:"' ()[]{}<>'''
 [terminal.shell]
 args = ["--login"]
 program = "/opt/homebrew/bin/bash"
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\x1b\r"
