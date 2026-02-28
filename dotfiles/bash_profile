@@ -8,20 +8,17 @@ export LC_ALL=en_US.UTF-8
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-# git completion
-if [ -f '/Users/wfernandes/workspace/dotfiles/.git-completion.bash' ]; then . '/Users/wfernandes/workspace/dotfiles/.git-completion.bash'; fi
-
-
 # Set PATH, MANPATH, etc., for Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/wfernandes/google-cloud-sdk/path.bash.inc' ]; then . '/Users/wfernandes/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/wfernandes/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/wfernandes/google-cloud-sdk/completion.bash.inc'; fi
-
-
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # Buildpacks pack cli completion.
-. $(pack completion)
+if command -v pack &>/dev/null; then . "$(pack completion)"; fi
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

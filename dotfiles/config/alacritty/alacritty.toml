@@ -283,9 +283,9 @@ semantic_escape_chars = ''',│`|:"' ()[]{}<>'''
 
 [terminal.shell]
 args = ["--login"]
-program = "/opt/homebrew/bin/bash"
+program = "/bin/zsh"
 
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"
-chars = "\x1b\r"
+chars = "\u001B\r"

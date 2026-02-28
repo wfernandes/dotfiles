@@ -98,9 +98,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -lah"
-alias la="ls -latrh"
 alias ll="ls -lah"
 alias la="ls -latrh"
 alias vim='nvim'
@@ -111,3 +108,8 @@ alias cleanbranches="git branch -vv | grep ': gone]' | grep -v '\*' | awk '{prin
 # Update with yellow path.
 setopt prompt_subst
 PROMPT='%{$fg[magenta]%}$(toon)%{$reset_color%} %{$fg[yellow]%}%~/ %{$reset_color%}${vcs_info_msg_0_}%{$reset_color%}'
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
