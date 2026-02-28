@@ -18,3 +18,10 @@ brew "buildpacks/tap/pack"
 brew "node"
 brew "mkcert"
 cask "font-source-code-pro"
+
+# GUI Applications
+cask "brave-browser"
+cask "google-chrome"
+cask "firefox"
+cask "rectangle"
+cask "flycut"
