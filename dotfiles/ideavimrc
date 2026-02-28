@@ -27,6 +27,7 @@ map Q gq
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+map <D-S-a> <Action>(GotoAction)
 
 " Find more examples here: https://jb.gg/share-ideavimrc
 

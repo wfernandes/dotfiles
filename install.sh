@@ -1,63 +1,87 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-BREW_BUNDLE=false
-LINK_DOTFILES=false
-INIT_NVIM=false
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-flag=$1
-if [[ "$flag" = "" ]]; then
-    flag="-a"
-fi
+info()    { echo "[info]  $*"; }
+success() { echo "[ok]    $*"; }
+warn()    { echo "[warn]  $*"; }
 
-if [[ "$flag" = "-a" ]]; then
-    LINK_DOTFILES=true
-    INIT_NVIM=true
-    BREW_BUNDLE=true
-elif [[ "$flag" = "-l" ]]; then
-    LINK_DOTFILES=true
-elif [[ "$flag" = "-n" ]]; then
-    echo "Initialize nvim set"
-    INIT_NVIM=true
-elif [[ "$flag" = "-b" ]]; then
-    echo "Brew bundle set"
-    BREW_BUNDLE=true
-fi
-
-function link_all_dotfiles {
-    echo "Linking dotfiles"
-    rcup -d dotfiles -S config/nvim -S vim -v
+# ── Homebrew ──────────────────────────────────────────────────────────────────
+install_homebrew() {
+    if command -v brew &>/dev/null; then
+        info "Homebrew already installed, updating..."
+        brew update --quiet
+    else
+        info "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        # Add brew to PATH for this session (Apple Silicon default path)
+        eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || eval "$(/usr/local/bin/brew shellenv)" 2>/dev/null
+    fi
+    success "Homebrew ready"
 }
 
-function initialize_nvim_plugins {
-    echo "Initialize nvim plugins"
-    nvim +PlugInstall +qall
+# ── Brew bundle ───────────────────────────────────────────────────────────────
+run_brew_bundle() {
+    info "Installing packages from Brewfile..."
+    brew bundle --file="$DOTFILES_DIR/Brewfile"
+    success "Brew bundle complete"
 }
 
-function initialize_nvim_coc_extensions {
-    echo "Initialize Coc extensions"
-    # https://github.com/neoclide/coc-rls
-    nvim -c 'CocInstall -sync coc-json coc-yaml coc-git coc-rls |q'
+# ── oh-my-zsh ─────────────────────────────────────────────────────────────────
+install_oh_my_zsh() {
+    if [[ -d "$HOME/.oh-my-zsh" ]]; then
+        info "oh-my-zsh already installed"
+    else
+        info "Installing oh-my-zsh..."
+        RUNZSH=no CHSH=no sh -c \
+            "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        success "oh-my-zsh installed"
+    fi
 }
 
-function brew_bundle {
-    brew bundle
+# ── Link dotfiles ─────────────────────────────────────────────────────────────
+link_dotfiles() {
+    info "Linking dotfiles via rcup..."
+    rcup -d "$DOTFILES_DIR/dotfiles" -S config/nvim -S config/alacritty -S vim -v
+    success "Dotfiles linked"
 }
-tic tmux-256color.terminfo
 
-if [[ "$BREW_BUNDLE" = "true" ]]; then
-    brew_bundle
-fi
+# ── Neovim ────────────────────────────────────────────────────────────────────
+init_nvim() {
+    if ! command -v nvim &>/dev/null; then
+        warn "nvim not found, skipping plugin install"
+        return
+    fi
+    info "Installing nvim plugins via lazy.nvim..."
+    nvim --headless "+Lazy! sync" +qa
+    success "Neovim ready (LSP servers will install automatically on first open)"
+}
 
-if [[ "$LINK_DOTFILES" = "true" ]]; then
-    link_all_dotfiles
-fi
+# ── tmux terminfo ─────────────────────────────────────────────────────────────
+install_terminfo() {
+    info "Installing tmux-256color terminfo..."
+    tic "$DOTFILES_DIR/tmux-256color.terminfo"
+    success "terminfo installed"
+}
 
-if [[ "$INIT_NVIM" = "true" ]]; then
-    initialize_nvim_plugins
-    initialize_nvim_coc_extensions
-fi
+# ── Main ──────────────────────────────────────────────────────────────────────
+main() {
+    echo ""
+    echo "╔══════════════════════════════════╗"
+    echo "║   dotfiles bootstrap installer   ║"
+    echo "╚══════════════════════════════════╝"
+    echo ""
 
-echo "Remember to install bash-completions---"
-echo "git"
-echo "kubectl"
-echo "rustup help completions"
+    install_homebrew
+    run_brew_bundle
+    install_oh_my_zsh
+    link_dotfiles
+    init_nvim
+    install_terminfo
+
+    echo ""
+    success "All done! Restart your terminal (or run: source ~/.zshrc)"
+}
+
+main "$@"

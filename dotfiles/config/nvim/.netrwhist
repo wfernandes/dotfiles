@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/wfernandes/workspace/cobra'
+let g:netrw_dirhist_4='/Users/wfernandes/workspace/foobar/cmd'
+let g:netrw_dirhist_3='/Users/wfernandes/workspace/foobar'
+let g:netrw_dirhist_2='/Users/wfernandes/workspace/foobar/cmd'
+let g:netrw_dirhist_1='/Users/wfernandes/workspace/foobar'
+let g:netrw_dirhist_0='/Users/wfernandes/workspace/dotfiles'
+let g:netrw_dirhist_9='/Users/wfernandes/workspace/dotfiles/dotfiles'
+let g:netrw_dirhist_8='/Users/wfernandes/workspace/dotfiles/dotfiles/ssh'
+let g:netrw_dirhist_7='/Users/wfernandes/workspace/dotfiles/dotfiles'
+let g:netrw_dirhist_6='/Users/wfernandes/workspace/dotfiles'

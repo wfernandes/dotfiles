@@ -1,0 +1,2 @@
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/go/bin:$HOME/.local/bin:$PATH"

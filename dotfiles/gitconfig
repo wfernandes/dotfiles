@@ -1,6 +1,7 @@
 # vim: set noet :
 [push]
 	default = current
+	autoSetupRemote = true
 [alias]
 	blog="log origin/master... --left-right"
 	br=branch
@@ -23,6 +24,7 @@
 	sta=stash
 	sur="submodule update --init --recursive"
 	unstage="reset HEAD"
+	pushf="push --force-with-lease"
 	git = !git
 [filter "gitconfig-ignore-duet"]
 	smudge =
@@ -39,4 +41,4 @@
 	process = git-lfs filter-process
 	required = true
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+	insteadof = https://github.com
