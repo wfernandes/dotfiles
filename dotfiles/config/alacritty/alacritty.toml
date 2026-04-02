@@ -267,7 +267,7 @@ foreground = "0xebdbb2"
 size = 17
 
 [font.normal]
-family = "Source Code Pro"
+family = "SauceCodePro Nerd Font"
 style = "Regular"
 
 # [mouse.double_click]

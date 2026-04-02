@@ -17,7 +17,7 @@ brew "volta"
 brew "buildpacks/tap/pack"
 brew "node"
 brew "mkcert"
-cask "font-source-code-pro"
+cask "font-sauce-code-pro-nerd-font"
 
 # GUI Applications
 cask "brave-browser"
